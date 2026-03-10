@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 environment {
     DOCKER_IMAGE = "manjunathbm2003/devops-app"
 }
@@ -33,6 +32,5 @@ stages {
     }
 
 }
-```
 
 }
