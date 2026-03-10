@@ -1,29 +1,29 @@
 pipeline {
     agent any
 
-    stages {
+    environment {
+        DOCKER_IMAGE = "manjunath2703/devops-app"
+    }
 
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/manjunath2703/DevOps-project.git'
-            }
-        }
+    stages {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t manjunath2703/devops-app .'
+                sh 'docker build -t $DOCKER_IMAGE .'
             }
         }
 
         stage('Docker Login') {
             steps {
-                sh 'docker login -u manjunath2703 -p YOUR_PASSWORD'
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                    sh 'echo $PASS | docker login -u $USER --password-stdin'
+                }
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                sh 'docker push manjunath2703/devops-app'
+                sh 'docker push $DOCKER_IMAGE'
             }
         }
 
