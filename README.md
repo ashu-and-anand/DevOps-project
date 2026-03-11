@@ -6,10 +6,10 @@ Jenkins
 Docker
 DockerHub
 Ansible
-AWS EC2
+AWS EC2-.1master & 1 worker -Nodes
 
 Pipeline Flow:
 
 GitHub → Jenkins → Docker Build → DockerHub → Ansible → Worker Node
 
-Application runs on port 8085.
+Application runs on port <--IP address-->:8085
