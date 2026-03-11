@@ -7,7 +7,7 @@
   - name: Run Docker Container
     docker_container:
       name: webapp
-      image: manjunathbm2003/Devops-app:latest
+      image: ashutosh/Devops-app:latest
       state: started
       ports:
         - "8085:80"
